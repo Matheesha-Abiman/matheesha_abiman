@@ -92,7 +92,18 @@ export default function Experience() {
                 {/* Timeline */}
                 <div className="max-w-4xl mx-auto relative">
                     {/* Center line */}
-                    <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-indigo-200 via-purple-200 to-indigo-200 dark:from-indigo-900 dark:via-purple-900 dark:to-indigo-900 transform md:-translate-x-1/2" />
+                    {/* Center line with animated beam */}
+                    <div className="absolute left-8 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-indigo-200 via-purple-200 to-indigo-200 dark:from-indigo-900 dark:via-purple-900 dark:to-indigo-900 transform md:-translate-x-1/2 overflow-hidden">
+                        <motion.div
+                            className="absolute top-0 left-0 w-full h-40 bg-gradient-to-b from-transparent via-indigo-600 to-transparent dark:via-indigo-400"
+                            animate={{ top: ['-20%', '120%'] }}
+                            transition={{
+                                duration: 8,
+                                repeat: Infinity,
+                                ease: "linear"
+                            }}
+                        />
+                    </div>
 
                     {experiences.map((exp, index) => {
                         const IconComponent = exp.icon;

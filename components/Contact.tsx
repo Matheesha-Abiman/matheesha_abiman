@@ -106,8 +106,28 @@ export default function Contact() {
                                 {item.link ? (
                                     <a href={item.link} className="block h-full">
                                         <div className="glass rounded-2xl p-8 h-full border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300 bg-white/50 dark:bg-gray-900/50">
-                                            <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 group-hover:bg-gray-200 dark:group-hover:bg-gray-700 transition-colors">
-                                                <item.icon className="w-6 h-6" />
+                                            <div className="relative w-16 h-16 mx-auto mb-4 flex items-center justify-center overflow-hidden rounded-xl">
+                                                {/* Track (Base Border) */}
+                                                <div className="absolute inset-0 bg-gray-200 dark:bg-gray-800" />
+
+                                                {/* Rotating Beam (Longer Tail) */}
+                                                <motion.div
+                                                    className="absolute inset-[-50%] bg-[conic-gradient(from_0deg,transparent_0_270deg,#6366f1_360deg)]"
+                                                    animate={{ rotate: 360 }}
+                                                    transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                                                    style={{ width: '200%', height: '200%' }}
+                                                />
+
+                                                {/* Icon background (Mask) with Vertical Scan */}
+                                                <div className="relative w-[60px] h-[60px] rounded-[10px] bg-gray-100 dark:bg-gray-900 flex items-center justify-center z-10 text-gray-700 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-accent-400 transition-colors overflow-hidden">
+                                                    {/* Vertical Light Scan */}
+                                                    <motion.div
+                                                        className="absolute inset-0 w-full h-full bg-gradient-to-b from-transparent via-indigo-500/20 to-transparent dark:via-indigo-400/30 blur-[2px]"
+                                                        animate={{ top: ['-100%', '100%'] }}
+                                                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                                                    />
+                                                    <item.icon className="w-6 h-6 relative z-10" />
+                                                </div>
                                             </div>
                                             <h3 className="font-bold text-lg mb-2 text-gray-900 dark:text-white">{item.title}</h3>
                                             <p className="text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
@@ -117,8 +137,28 @@ export default function Contact() {
                                     </a>
                                 ) : (
                                     <div className="glass rounded-2xl p-8 h-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50">
-                                        <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300">
-                                            <item.icon className="w-6 h-6" />
+                                        <div className="relative w-16 h-16 mx-auto mb-4 flex items-center justify-center overflow-hidden rounded-xl">
+                                            {/* Track (Base Border) */}
+                                            <div className="absolute inset-0 bg-gray-200 dark:bg-gray-800" />
+
+                                            {/* Rotating Beam (Longer Tail) */}
+                                            <motion.div
+                                                className="absolute inset-[-50%] bg-[conic-gradient(from_0deg,transparent_0_270deg,#6366f1_360deg)]"
+                                                animate={{ rotate: 360 }}
+                                                transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                                                style={{ width: '200%', height: '200%' }}
+                                            />
+
+                                            {/* Icon background (Mask) with Vertical Scan */}
+                                            <div className="relative w-[60px] h-[60px] rounded-[10px] bg-gray-100 dark:bg-gray-900 flex items-center justify-center z-10 text-gray-700 dark:text-gray-300 overflow-hidden">
+                                                {/* Vertical Light Scan */}
+                                                <motion.div
+                                                    className="absolute inset-0 w-full h-full bg-gradient-to-b from-transparent via-indigo-500/20 to-transparent dark:via-indigo-400/30 blur-[2px]"
+                                                    animate={{ top: ['-100%', '100%'] }}
+                                                    transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                                                />
+                                                <item.icon className="w-6 h-6 relative z-10" />
+                                            </div>
                                         </div>
                                         <h3 className="font-bold text-lg mb-2 text-gray-900 dark:text-white">{item.title}</h3>
                                         <p className="text-gray-600 dark:text-gray-400">{item.value}</p>
