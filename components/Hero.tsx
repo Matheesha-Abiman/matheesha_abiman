@@ -63,7 +63,7 @@ export default function Hero() {
     return (
         <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20">
             <div className="container mx-auto px-4 relative z-10">
-                <div className="flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
+                <div className="flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-14 max-w-6xl mx-auto">
                     {/* Left side - Text content */}
                     <motion.div
                         className="flex-1 text-center lg:text-left"
@@ -160,7 +160,7 @@ export default function Hero() {
                         style={{ y: y1 }}
                     >
                         <motion.div
-                            className="relative w-72 h-72 md:w-96 md:h-96 lg:w-[500px] lg:h-[500px]"
+                            className="relative w-64 h-64 md:w-80 md:h-80 lg:w-[360px] lg:h-[360px]"
                             whileHover={{ scale: 1.02 }}
                             transition={{ duration: 0.3 }}
                         >
