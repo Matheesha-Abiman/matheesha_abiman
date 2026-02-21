@@ -117,9 +117,9 @@ export default function Footer() {
                     {/* Bottom bar */}
                     <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                         <p className="text-sm text-gray-500 dark:text-gray-500 flex items-center gap-1.5">
-                            © {new Date().getFullYear()} Matheesha Abiman. Made with
+                            © {new Date().getFullYear()} Designed with
                             <FiHeart className="w-4 h-4 text-red-500" />
-                            using Next.js
+                            by Matheesha Abiman
                         </p>
 
                         <motion.button
