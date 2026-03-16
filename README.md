@@ -1,4 +1,4 @@
-# Matheesha Abiman - Full-Stack Developer Portfolio
+# Matheesha Abiman - Full-Stack Developer & UI/UX Designer Portfolio
 
 ![Portfolio Preview](public/profile.png)
 
