@@ -4,6 +4,7 @@ import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
+import FigmaDesigns from "@/components/FigmaDesigns";
 import Education from "@/components/Education";
 import Awards from "@/components/Awards";
 import Contact from "@/components/Contact";
@@ -20,6 +21,7 @@ export default function Home() {
       <Skills />
       <Experience />
       <Projects />
+      <FigmaDesigns />
       <Education />
       <Awards />
       <Contact />

@@ -28,6 +28,7 @@ export default function Navbar() {
         { href: '#skills', label: 'Skills' },
         { href: '#experience', label: 'Experience' },
         { href: '#projects', label: 'Projects' },
+        { href: '#figma-designs', label: 'UI/UX' },
         { href: '#education', label: 'Education' },
         { href: '#contact', label: 'Contact' },
     ];
