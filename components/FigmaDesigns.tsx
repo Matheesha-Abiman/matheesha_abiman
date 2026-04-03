@@ -49,6 +49,14 @@ export default function FigmaDesigns() {
             gradient: 'from-violet-500 to-purple-600',
             glowColor: 'rgba(139,92,246,0.3)',
         },
+        {
+            title: 'GEO-CLEAN',
+            description: 'Smart mobile app for on-demand cleaning services — cleaners scan QR codes, selfie check-ins, GPS tracking & admin reporting.',
+            link: 'https://www.figma.com/design/RzBdBoyqu1wcmRIO6OKPuB/GEO-CLEAN?node-id=0-1&t=vX5nXGLC7TUmo8LW-1',
+            category: 'Mobile App',
+            gradient: 'from-cyan-500 to-sky-500',
+            glowColor: 'rgba(6,182,212,0.3)',
+        },
     ];
 
     // First 3 cards — top row, last 2 — bottom row
@@ -193,9 +201,9 @@ export default function FigmaDesigns() {
                         ))}
                     </motion.div>
 
-                    {/* Row 2 — 2 cards, centered */}
+                    {/* Row 2 — 3 cards */}
                     <motion.div
-                        className="grid grid-cols-1 md:grid-cols-2 gap-5 max-w-4xl mx-auto"
+                        className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-6xl mx-auto"
                         variants={containerVariants}
                         initial="hidden"
                         animate={isInView ? 'show' : 'hidden'}

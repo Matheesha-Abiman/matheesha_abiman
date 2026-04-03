@@ -3,17 +3,13 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { FiCode, FiBriefcase, FiAward, FiDownload } from 'react-icons/fi';
+import { FiDownload } from 'react-icons/fi';
 
 export default function About() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: '-100px' });
 
-    const stats = [
-        { icon: FiCode, value: '8+', label: 'Projects Completed', color: 'from-blue-500 to-cyan-500' },
-        { icon: FiBriefcase, value: '2+', label: 'Years Experience', color: 'from-purple-500 to-pink-500' },
-        { icon: FiAward, value: '5+', label: 'Certifications', color: 'from-orange-500 to-amber-500' },
-    ];
+
 
     return (
         <section id="about" className="py-24 relative overflow-hidden" ref={ref}>
@@ -100,40 +96,7 @@ export default function About() {
                         </div>
                     </motion.div>
 
-                    {/* Stats Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                        {stats.map((stat, index) => (
-                            <motion.div
-                                key={stat.label}
-                                className="relative group"
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                                whileHover={{ y: -5 }}
-                            >
-                                <div className="glass rounded-3xl p-8 text-center border border-gray-200/50 dark:border-gray-700/50 hover:border-primary-500/40 dark:hover:border-accent-500/40 transition-all duration-500 group-hover:shadow-2xl group-hover:shadow-primary-500/10 dark:group-hover:shadow-accent-500/10">
-                                    {/* Icon with gradient background */}
-                                    <motion.div
-                                        className={`w-18 h-18 mx-auto mb-5 rounded-2xl bg-gradient-to-br ${stat.color} flex items-center justify-center shadow-xl`}
-                                        whileHover={{ scale: 1.15, rotate: 8 }}
-                                        transition={{ type: "spring" as const, stiffness: 300 }}
-                                    >
-                                        <stat.icon className="w-8 h-8 text-white" />
-                                    </motion.div>
 
-                                    <motion.div
-                                        className="text-4xl font-bold gradient-text mb-2"
-                                        initial={{ scale: 0 }}
-                                        animate={isInView ? { scale: 1 } : { scale: 0 }}
-                                        transition={{ type: "spring", stiffness: 200, delay: 0.5 + index * 0.1 }}
-                                    >
-                                        {stat.value}
-                                    </motion.div>
-                                    <div className="text-sm text-gray-600 dark:text-gray-400 font-medium">{stat.label}</div>
-                                </div>
-                            </motion.div>
-                        ))}
-                    </div>
                 </motion.div>
             </div>
         </section>
