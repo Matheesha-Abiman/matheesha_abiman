@@ -170,25 +170,25 @@ export default function Contact() {
 
                     {/* CTA Section */}
                     <motion.div
-                        className="glass rounded-3xl p-10 mb-12 bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800"
+                        className="glass flex flex-col items-center justify-center rounded-2xl p-6 md:p-8 max-w-2xl mx-auto mb-12 bg-white/50 dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800"
                         initial={{ opacity: 0, scale: 0.95 }}
                         animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
                         transition={{ delay: 0.5, duration: 0.5 }}
                     >
-                        <h3 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900 dark:text-white">
+                        <h3 className="text-xl md:text-2xl font-bold mb-3 text-gray-900 dark:text-white">
                             Ready to build something incredible?
                         </h3>
-                        <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-lg mx-auto">
+                        <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-md mx-auto text-sm md:text-base">
                             Whether you have a project idea, job opportunity, or just want to chat about tech,
                             I&apos;d love to hear from you.
                         </p>
                         <motion.a
                             href="mailto:matheeshaabi@gmail.com"
-                            className="inline-flex items-center gap-3 px-10 py-4 rounded-2xl bg-gradient-to-r from-primary-500 via-purple-500 to-accent-500 text-white font-bold text-lg hover:shadow-2xl hover:shadow-primary-500/30 transition-all duration-300"
-                            whileHover={{ scale: 1.08, boxShadow: "0 20px 50px -10px rgba(139, 92, 246, 0.5)" }}
+                            className="inline-flex items-center gap-2 px-8 py-3 rounded-xl bg-gradient-to-r from-primary-500 via-purple-500 to-accent-500 text-white font-bold text-base hover:shadow-xl hover:shadow-primary-500/30 transition-all duration-300"
+                            whileHover={{ scale: 1.05, boxShadow: "0 15px 35px -10px rgba(139, 92, 246, 0.5)" }}
                             whileTap={{ scale: 0.98 }}
                         >
-                            <FiSend className="w-5 h-5" />
+                            <FiSend className="w-4 h-4" />
                             Send Message
                         </motion.a>
                     </motion.div>

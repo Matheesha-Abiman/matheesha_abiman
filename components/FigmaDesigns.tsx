@@ -1,12 +1,13 @@
 'use client';
 
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { FiFigma, FiExternalLink } from 'react-icons/fi';
+import { useRef, useState } from 'react';
+import { FiFigma, FiExternalLink, FiChevronDown, FiChevronUp } from 'react-icons/fi';
 
 export default function FigmaDesigns() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: '-100px' });
+    const [showAll, setShowAll] = useState(false);
 
     const designs = [
         {
@@ -59,9 +60,7 @@ export default function FigmaDesigns() {
         },
     ];
 
-    // First 3 cards — top row, last 2 — bottom row
-    const topRow = designs.slice(0, 3);
-    const bottomRow = designs.slice(3);
+    const visibleDesigns = showAll ? designs : designs.slice(0, 3);
 
     const containerVariants = {
         hidden: { opacity: 0 },
@@ -85,7 +84,10 @@ export default function FigmaDesigns() {
         },
     };
 
-    const Card = ({ design, index }: { design: typeof designs[0]; index: number }) => (
+    const Card = ({ design, index }: { design: typeof designs[0]; index: number }) => {
+        const [isLoaded, setIsLoaded] = useState(false);
+
+        return (
         <motion.div
             key={index}
             variants={cardVariants}
@@ -99,21 +101,33 @@ export default function FigmaDesigns() {
                 style={{ background: design.glowColor }}
             />
 
-            <div className="glass flex flex-col rounded-2xl p-4 h-full border border-gray-200/50 dark:border-gray-700/50 group-hover:border-primary-500/40 dark:group-hover:border-accent-500/40 overflow-hidden relative transition-all duration-500">
+            <div className="glass flex flex-col rounded-xl p-3 h-full border border-gray-200/50 dark:border-gray-700/50 group-hover:border-primary-500/40 dark:group-hover:border-accent-500/40 overflow-hidden relative transition-all duration-500">
                 {/* Top gradient bar */}
                 <div className={`absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r ${design.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
 
                 {/* Shimmer sweep */}
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/8 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out pointer-events-none z-10" />
 
-                {/* Figma Embed */}
+                {/* Figma Embed Placeholder vs Iframe */}
                 <div className="relative w-full overflow-hidden rounded-xl aspect-[16/9] mb-3 bg-gray-100 dark:bg-gray-800 border border-gray-200/50 dark:border-gray-700/50 shadow-md group-hover:shadow-lg transition-all duration-500">
                     <div className="w-full h-full transition-transform duration-500 group-hover:scale-[1.02]">
-                        <iframe
-                            className="w-full h-full border-none"
-                            src={`https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(design.link)}`}
-                            allowFullScreen
-                        />
+                        {!isLoaded ? (
+                            <button
+                                onClick={() => setIsLoaded(true)}
+                                className="w-full h-full flex flex-col items-center justify-center bg-gray-50 dark:bg-[#1e1e1e] hover:bg-gray-100 dark:hover:bg-[#252525] transition-colors group/btn"
+                            >
+                                <div className={`p-3 rounded-full bg-gradient-to-br ${design.gradient} mb-2 shadow-md group-hover/btn:scale-110 transition-transform`}>
+                                    <FiFigma className="w-6 h-6 text-white" />
+                                </div>
+                                <span className="font-semibold text-xs text-gray-600 dark:text-gray-300">Load Preview</span>
+                            </button>
+                        ) : (
+                            <iframe
+                                className="w-full h-full border-none bg-white dark:bg-[#1e1e1e]"
+                                src={`https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(design.link)}`}
+                                allowFullScreen
+                            />
+                        )}
                     </div>
                 </div>
 
@@ -159,7 +173,8 @@ export default function FigmaDesigns() {
                 </div>
             </div>
         </motion.div>
-    );
+        );
+    };
 
     return (
         <section id="figma-designs" className="py-24 relative overflow-hidden" ref={ref}>
@@ -189,29 +204,42 @@ export default function FigmaDesigns() {
                         A curated collection of visually stunning interfaces, crafted with precision in Figma.
                     </p>
 
-                    {/* Row 1 — 3 cards */}
+                    {/* Grid of Cards */}
                     <motion.div
-                        className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-6xl mx-auto mb-5"
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto mb-10"
                         variants={containerVariants}
                         initial="hidden"
                         animate={isInView ? 'show' : 'hidden'}
+                        key={showAll ? 'all' : 'partial'} // Re-trigger animation when state changes
                     >
-                        {topRow.map((design, i) => (
-                            <Card key={i} design={design} index={i} />
+                        {visibleDesigns.map((design, i) => (
+                            <Card key={`design-${i}`} design={design} index={i} />
                         ))}
                     </motion.div>
 
-                    {/* Row 2 — 3 cards */}
-                    <motion.div
-                        className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-6xl mx-auto"
-                        variants={containerVariants}
-                        initial="hidden"
-                        animate={isInView ? 'show' : 'hidden'}
-                    >
-                        {bottomRow.map((design, i) => (
-                            <Card key={i + 3} design={design} index={i + 3} />
-                        ))}
-                    </motion.div>
+                    {/* Show More / Show Less Button */}
+                    {designs.length > 3 && (
+                        <motion.div 
+                            className="flex justify-center mt-12"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ delay: 0.5 }}
+                        >
+                            <button
+                                onClick={() => setShowAll(!showAll)}
+                                className="btn btn-outline flex items-center gap-2 group px-6 py-3 rounded-xl border border-gray-300 dark:border-gray-700 hover:border-primary-500 dark:hover:border-primary-500 hover:bg-primary-50 dark:hover:bg-primary-900/20 text-gray-700 dark:text-gray-300 transition-all duration-300"
+                            >
+                                <span className="font-semibold text-sm">
+                                    {showAll ? 'Show Less Designs' : 'Show All Designs'}
+                                </span>
+                                {showAll ? (
+                                    <FiChevronUp className="w-4 h-4 transition-transform group-hover:-translate-y-1" />
+                                ) : (
+                                    <FiChevronDown className="w-4 h-4 transition-transform group-hover:translate-y-1" />
+                                )}
+                            </button>
+                        </motion.div>
+                    )}
                 </motion.div>
             </div>
         </section>
