@@ -91,7 +91,7 @@ export default function Contact() {
                     </p>
 
                     <motion.div
-                        className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12"
+                        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-5 max-w-3xl mx-auto mb-12"
                         variants={containerVariants}
                         initial="hidden"
                         animate={isInView ? 'show' : 'hidden'}
@@ -105,8 +105,8 @@ export default function Contact() {
                             >
                                 {item.link ? (
                                     <a href={item.link} className="block h-full">
-                                        <div className="glass rounded-2xl p-8 h-full border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300 bg-white/50 dark:bg-gray-900/50">
-                                            <div className="relative w-16 h-16 mx-auto mb-4 flex items-center justify-center overflow-hidden rounded-xl">
+                                        <div className="glass rounded-2xl p-5 md:p-6 h-full border border-gray-200 dark:border-gray-800 hover:border-gray-300 dark:hover:border-gray-700 transition-all duration-300 bg-white/50 dark:bg-gray-900/50">
+                                            <div className="relative w-12 h-12 mx-auto mb-3 flex items-center justify-center overflow-hidden rounded-xl">
                                                 {/* Track (Base Border) */}
                                                 <div className="absolute inset-0 bg-gray-200 dark:bg-gray-800" />
 
@@ -119,25 +119,25 @@ export default function Contact() {
                                                 />
 
                                                 {/* Icon background (Mask) with Vertical Scan */}
-                                                <div className="relative w-[60px] h-[60px] rounded-[10px] bg-gray-100 dark:bg-gray-900 flex items-center justify-center z-10 text-gray-700 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-accent-400 transition-colors overflow-hidden">
+                                                <div className="relative w-[44px] h-[44px] rounded-[10px] bg-gray-100 dark:bg-gray-900 flex items-center justify-center z-10 text-gray-700 dark:text-gray-300 group-hover:text-primary-600 dark:group-hover:text-accent-400 transition-colors overflow-hidden">
                                                     {/* Vertical Light Scan */}
                                                     <motion.div
                                                         className="absolute inset-0 w-full h-full bg-gradient-to-b from-transparent via-indigo-500/20 to-transparent dark:via-indigo-400/30 blur-[2px]"
                                                         animate={{ top: ['-100%', '100%'] }}
                                                         transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
                                                     />
-                                                    <item.icon className="w-6 h-6 relative z-10" />
+                                                    <item.icon className="w-5 h-5 relative z-10" />
                                                 </div>
                                             </div>
-                                            <h3 className="font-bold text-lg mb-2 text-gray-900 dark:text-white">{item.title}</h3>
-                                            <p className="text-gray-600 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
+                                            <h3 className="font-bold text-base mb-1 text-gray-900 dark:text-white">{item.title}</h3>
+                                            <p className="text-gray-600 dark:text-gray-400 text-sm group-hover:text-gray-900 dark:group-hover:text-white transition-colors">
                                                 {item.value}
                                             </p>
                                         </div>
                                     </a>
                                 ) : (
-                                    <div className="glass rounded-2xl p-8 h-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50">
-                                        <div className="relative w-16 h-16 mx-auto mb-4 flex items-center justify-center overflow-hidden rounded-xl">
+                                    <div className="glass rounded-2xl p-5 md:p-6 h-full border border-gray-200 dark:border-gray-800 bg-white/50 dark:bg-gray-900/50">
+                                        <div className="relative w-12 h-12 mx-auto mb-3 flex items-center justify-center overflow-hidden rounded-xl">
                                             {/* Track (Base Border) */}
                                             <div className="absolute inset-0 bg-gray-200 dark:bg-gray-800" />
 
@@ -150,18 +150,18 @@ export default function Contact() {
                                             />
 
                                             {/* Icon background (Mask) with Vertical Scan */}
-                                            <div className="relative w-[60px] h-[60px] rounded-[10px] bg-gray-100 dark:bg-gray-900 flex items-center justify-center z-10 text-gray-700 dark:text-gray-300 overflow-hidden">
+                                            <div className="relative w-[44px] h-[44px] rounded-[10px] bg-gray-100 dark:bg-gray-900 flex items-center justify-center z-10 text-gray-700 dark:text-gray-300 overflow-hidden">
                                                 {/* Vertical Light Scan */}
                                                 <motion.div
                                                     className="absolute inset-0 w-full h-full bg-gradient-to-b from-transparent via-indigo-500/20 to-transparent dark:via-indigo-400/30 blur-[2px]"
                                                     animate={{ top: ['-100%', '100%'] }}
                                                     transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
                                                 />
-                                                <item.icon className="w-6 h-6 relative z-10" />
+                                                <item.icon className="w-5 h-5 relative z-10" />
                                             </div>
                                         </div>
-                                        <h3 className="font-bold text-lg mb-2 text-gray-900 dark:text-white">{item.title}</h3>
-                                        <p className="text-gray-600 dark:text-gray-400">{item.value}</p>
+                                        <h3 className="font-bold text-base mb-1 text-gray-900 dark:text-white">{item.title}</h3>
+                                        <p className="text-gray-600 dark:text-gray-400 text-sm">{item.value}</p>
                                     </div>
                                 )}
                             </motion.div>
