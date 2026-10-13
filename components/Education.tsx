@@ -23,7 +23,8 @@ export default function Education() {
             degree: 'Graduate Diploma in Software Engineering',
             institution: 'IJSE - Institute of Software Engineering',
             location: 'Galle, Sri Lanka',
-            period: 'March 2024 – Present',
+            period: 'March 2024 – September 2026',
+            status: 'Completed',
             icon: HiCodeBracket,
             color: 'from-violet-500 to-fuchsia-500',
         },
@@ -73,9 +74,16 @@ export default function Education() {
 
                                         {/* Content */}
                                         <div className="flex-1 min-w-0">
-                                            <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-1">
-                                                {edu.degree}
-                                            </h3>
+                                            <div className="flex items-center gap-2 flex-wrap mb-1">
+                                                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                                                    {edu.degree}
+                                                </h3>
+                                                {edu.status && (
+                                                    <span className="text-xs px-2.5 py-0.5 rounded-full font-medium bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20">
+                                                        {edu.status}
+                                                    </span>
+                                                )}
+                                            </div>
                                             <p className="text-gray-600 dark:text-gray-400 mb-3">
                                                 {edu.institution}
                                             </p>

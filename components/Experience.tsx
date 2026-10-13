@@ -3,13 +3,27 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { FiUsers, FiCalendar, FiMapPin, FiAward, FiBookOpen, FiShare2 } from 'react-icons/fi';
+import { FiUsers, FiCalendar, FiMapPin, FiAward, FiBookOpen, FiShare2, FiBriefcase } from 'react-icons/fi';
 
 export default function Experience() {
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: '-100px' });
 
     const experiences = [
+        {
+            title: 'Associate UI/UX Engineer',
+            company: 'Sentura Technologies',
+            location: 'Kalutara, Sri Lanka',
+            period: '26 March 2026 – 26 September 2026',
+            description: [
+                'Designed responsive web and mobile interfaces, intuitive user flows, and wireframes in Figma.',
+                'Collaborated with engineering teams to ensure pixel-perfect design implementation and consistency.',
+                'Conducted user research and usability testing to elevate user satisfaction and refine product features.',
+            ],
+            current: false,
+            icon: FiBriefcase,
+            color: 'from-blue-600 to-cyan-500',
+        },
         {
             title: 'Student Committee Organizer',
             company: 'IJSE – Institute of Software Engineering',
@@ -82,10 +96,10 @@ export default function Experience() {
                         Journey & Growth
                     </p>
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                        Leadership & Volunteering
+                        Experience & Leadership
                     </h2>
                     <p className="text-gray-600 dark:text-gray-400 max-w-xl mx-auto">
-                        My journey of growth through leadership roles and community engagement
+                        My journey of growth through professional experience, leadership roles, and community engagement
                     </p>
                 </motion.div>
 
