@@ -1,7 +1,5 @@
 # Matheesha Abiman - Full-Stack Developer & UI/UX Designer Portfolio
 
-![Portfolio Preview](public/profile.png)
-
 ## 🚀 Live Demo
 🌐 **[matheeshaabiman.vercel.app](https://matheeshaabiman.vercel.app/)**
 
